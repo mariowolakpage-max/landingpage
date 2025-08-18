@@ -1,0 +1,430 @@
+/* Custom CSS for Dr. Mário Wolak Website */
+
+:root {
+    --primary-color: #352f2d;
+    --secondary-color: #f4a261;
+    --accent-color: #e76f51;
+    --text-color: #333333;
+    --light-bg: #e4eee4; /* Alterado para um verde claro e sutil */
+    --gelo-bg: #e6faed
+    --nav-footer-bg: #041f05
+}
+
+
+/* .hero-patterns {
+    background-color: #dbeddd;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' width='80' height='80'%3E%3Cg fill='%230f3e14' fill-opacity='0.03'%3E%3Cpath d='M0 0h80v80H0V0zm20 20v40h40V20H20zm20 35a15 15 0 1 1 0-30 15 15 0 0 1 0 30z' opacity='.5'%3E%3C/path%3E%3Cpath d='M15 15h50l-5 5H20v40l-5 5V15zm0 50h50V15L80 0v80H0l15-15zm32.07-32.07l3.54-3.54A15 15 0 0 1 29.4 50.6l3.53-3.53a10 10 0 1 0 14.14-14.14zM32.93 47.07a10 10 0 1 1 14.14-14.14L32.93 47.07z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+} */
+
+
+.haikei-svg {
+    background-image:url("imagens/layered-waves-haikei-green.svg");
+    background-size: cover;
+    background-position: center;
+}
+
+
+@media (max-width: 991px) {
+    .haikei-svg {
+    background-image:url("imagens/layered-waves-haikei-green-tab.svg");
+    background-size: cover;
+    background-position: center;
+    }
+}
+
+@media (max-width: 575px) {
+    .haikei-svg {
+    background-image:url("imagens/layered-waves-haikei-green-mob.svg");
+    background-size: cover;
+    background-position: center;
+    }
+}
+
+
+.haikei-svg-galeria {
+   background-image:url("imagens/blob-scene-haikei-green-desk.svg");
+    background-size: cover;
+    background-position: center;
+} 
+
+@media (max-width: 991px) {
+    .haikei-svg-galeria {
+    background-image:url("imagens/blob-scene-haikei-green-tab.svg");
+    background-size: cover;
+    background-position: center;
+    }
+}
+
+@media (max-width: 575px) {
+    .haikei-svg-galeria {
+    background-image:url("imagens/blob-scene-haikei-green-mob.svg");
+    background-size: cover;
+    background-position: center;
+    }
+}
+
+
+
+.gradiente-especialidades {
+    
+    /* 1. Esta é a cor de fundo que aparecerá no centro (a cor mais clara) */
+    background-color: #366e54;
+
+    /* 2. Aqui criamos as 4 camadas de gradiente */
+    background-image:
+        /* Gradiente de Cima (escuro para transparente) */
+        linear-gradient(to bottom, #041f05, transparent),
+        
+        /* Gradiente de Baixo (escuro para transparente) */
+        linear-gradient(to top, #041f05, transparent),
+        
+        /* Gradiente da Esquerda (escuro para transparente) */
+        linear-gradient(to right, #041f05, transparent),
+        
+        /* Gradiente da Direita (escuro para transparente) */
+        linear-gradient(to left, #041f05, transparent);
+
+    /* 3. Posição de cada gradiente na lista acima */
+    background-position: top, bottom, left, right;
+
+    /* 4. Tamanho de cada gradiente (largura e altura) */
+    /* Este é o segredo para o efeito! Eles se encontram no meio. */
+    background-size: 100% 30%, 100% 20%, 20% 100%, 20% 100%;
+
+    /* 5. Garante que nenhum gradiente se repita */
+    background-repeat: no-repeat;
+
+    /* Suas outras propriedades, como padding, continuam aqui */
+    padding: 80px 0;
+}
+
+
+
+.bg-navbar {
+    background-color: #041f05;
+}
+
+.cor-links {
+    color: #abf5ed;
+}
+
+.navbar-toggler-icon.cor-links {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(171, 245, 237, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.btn-cor {
+    color: #abf5ed;
+    border-color: #abf5ed;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-cor:hover {
+    background-color: #e4eee4;
+    border-color: #e4eee4;
+    transform: translateY(-2px);
+}
+
+/* .bg-sobre {
+    background-color: #e6faed; 
+} */
+
+.tam-imagem-sobre {
+    width: 800px;
+}
+
+/* .bg-especialidades {
+    background-color: #366e54;
+} */
+
+.text-especialidades {
+    color: #e6faed;
+}
+
+.bg-card {
+    background-color: #e6faed; /* Alterado para um verde claro e sutil */
+}
+
+/* .bg-galeria {
+    background-color: #e6faed;
+} */
+
+.bg-footer {
+    background-color: #041f05;
+}
+
+/* NOVAS CLASSES PARA A ÚLTIMA SEÇÃO */
+.bg-final-section {
+    background-color: #366e54; /* Verde escuro, como a seção de especialidades */
+}
+
+.bg-content-box {
+    background-color: #e6faed; /* Verde claro, como bg-sobre, bg-card, bg-galeria */
+}
+/* FIM DAS NOVAS CLASSES */
+
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Navigation */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand img {
+    max-height: 40px;
+    width: auto;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #e4eee4 !important;
+}
+
+.btn-warning {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(44, 95, 95, 0.8), rgba(44, 95, 95, 0.8)),
+        url('imagens/neurosurgery.jpg') center/cover no-repeat;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+@media (min-width: 1440px) {
+    .hero-section {
+        height: 100vh;
+    }
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 15% 25%, rgba(0, 0, 0, 0.35) 0%, transparent 50%),
+        radial-gradient(circle at 80% 75%, rgba(0, 0, 0, 0.3) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.2) 0%, transparent 70%),
+        linear-gradient(135deg, rgba(25, 72, 38, 0.9) 0%, rgba(44, 95, 95, 0.7) 100%);
+}
+
+/* --- CÓDIGO DE CORREÇÃO PARA A FOTO DO HERO --- */
+
+.perfil-image {
+    max-width: 80%; /* Limita a largura da imagem */
+    height: auto;     /* Mantém a proporção */
+    border-radius: 50%; /* Deixa a imagem redonda */
+    display: block;   /* Ajuda na centralização */
+    margin: 20px auto; /* Adiciona margem e centraliza */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Adiciona uma sombra sutil */
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* =============================================== */
+/* CÓDIGO DE CORREÇÃO PARA O HERO SECTION         */
+/* =============================================== */
+
+/* Estilos para Tablets e Telas Menores */
+@media (max-width: 991.98px) {
+    .hero-section h1 {
+        font-size: 3rem;
+    }
+    .hero-section h2 {
+        font-size: 1.5rem;
+    }
+    .hero-section .lead {
+        font-size: 1.2rem;
+    }
+}
+
+/* Estilos para Celulares */
+@media (max-width: 767px) {
+    .hero-section {
+        text-align: center;
+        padding-top: 100px;
+        padding-bottom: 40px;
+    }
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    .hero-section h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Flip Card Styles */
+.flip-card {
+    background-color: transparent;
+    perspective: 1000px;
+    min-height: 350px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    /* Safari */
+    backface-visibility: hidden;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 15px;
+    /* Add border-radius to the back face */
+}
+
+.flip-card-back .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+/* General Card Styles */
+.card {
+    border: none;
+    border-radius: 15px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+    height: 100%;
+}
+
+.card:not(.flip-card-front .card):hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-title {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.flip-card-front .card-title {
+    color: var(--primary-color);
+}
+
+/* Gallery Styles */
+#gallery-main-image-container {
+    height: 700px; /* Altura padrão para desktop */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    overflow: hidden; /* Garante que a imagem não ultrapasse as bordas arredondadas */
+}
+
+@media (max-width: 991.98px) {
+    #gallery-main-image-container {
+        height: 600px; /* Altura para tablets */
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    #gallery-main-image-container {
+        height: 450px; /* Altura para celulares */
+    }
+}
+
+#gallery-main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ESSA É A PROPRIEDADE MÁGICA! ✨ */
+    border-radius: 15px;
+}
+
+.gallery-thumb {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    border: 3px solid transparent;
+    border-radius: 8px;
+    width: 100%; /* Faz a imagem ocupar todo o espaço da coluna (col-4, col-md-3, etc) */
+    height: 75px; /* Altura fixa para todas as miniaturas */
+    object-fit: cover; /* Garante que a miniatura não fique distorcida */
+}
+
+.gallery-thumb:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.gallery-thumb.active {
+    opacity: 1;
+    border-color: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+/* General Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+section {
+    padding: 80px 0;
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.text-warning {
+    color: var(--secondary-color) !important;
+}
