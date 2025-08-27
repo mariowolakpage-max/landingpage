@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 asgiref==3.9.1
 Django==5.2.5
 python-dotenv==1.1.1
@@ -48,4 +47,4 @@ rjsmin~=1.2.1
 #    - Via <iframe> do Google Maps: não precisa de pacote Python.
 #    - Via LeafletJS (recomendado para interativo): apenas inclua os arquivos JS/CSS do Leaflet em /static ou CDN.
 #      (django-leaflet é opcional e mais útil quando há formulários/map widgets; não é necessário só para exibir um mapa.)
->>>>>>> fd91b9f747a36440807c2d20af3f46aa92636eea
+
