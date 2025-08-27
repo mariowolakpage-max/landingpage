@@ -17,7 +17,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['landingpage-soay.onrender.com']
+ALLOWED_HOSTS = ['landingpage-soay.onrender.com,www.drmariowolak.com.br,drmariowolak.com.br']
 
 
 # Application definition
