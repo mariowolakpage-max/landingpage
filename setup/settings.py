@@ -92,6 +92,18 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# --- CONFIGURAÇÃO DE E-MAIL COM SENDGRID ---
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'apikey'
+
+# Pega as credenciais do SendGrid do .env usando os.getenv()
+EMAIL_HOST_PASSWORD = os.getenv('SENDGRID_API_KEY')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
