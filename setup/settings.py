@@ -2,113 +2,95 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# === Paths ===
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# === Env ===
-# Carrega .env na raiz do projeto (pensado para dev/local)
-load_dotenv(BASE_DIR / ".env")
 
-# === Segurança & Debug ===
-# NUNCA deixe DEBUG=True em produção
-DEBUG = os.getenv("DEBUG", "False").lower() == "true"
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# Secret Key obrigatória (defina no Render)
-SECRET_KEY = os.getenv("SECRET_KEY", "unsafe-dev-key-change-me")
+# SECURITY WARNING: keep the secret key used in production secret!
+load_dotenv(os.path.join(BASE_DIR, ".env"))
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-# Hosts permitidos
-# No Render, use algo como: .onrender.com,localhost,127.0.0.1
-ALLOWED_HOSTS = [h.strip() for h in os.getenv(
-    "ALLOWED_HOSTS",
-    ".onrender.com,localhost,127.0.0.1"
-).split(",") if h.strip()]
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
 
-# CSRF Trusted (Django exige esquema)
-CSRF_TRUSTED_ORIGINS = [o.strip() for o in os.getenv(
-    "CSRF_TRUSTED_ORIGINS",
-    "https://*.onrender.com"
-).split(",") if o.strip()]
+ALLOWED_HOSTS = []
 
-# === Apps ===
+
+# Application definition
+
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-
-    # Seu app
-    "core",
-
-    # Opcional: helpers de template para Bootstrap 5 (se estiver usando)
-    # "django_bootstrap5",
-    # Opcional: compressor (se quiser minificar CSS/JS)
-    # "django_compressor",
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'core',
 ]
 
-# === Middleware ===
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    # Whitenoise: sirva estáticos direto do app em produção
-    "whitenoise.middleware.WhiteNoiseMiddleware",
-
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# === URLs/WSGI ===
-ROOT_URLCONF = "setup.urls"
-WSGI_APPLICATION = "setup.wsgi.application"
+ROOT_URLCONF = 'setup.urls'
 
-# === Templates ===
 TEMPLATES = [
     {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],  # /templates na raiz do projeto
-        "APP_DIRS": True,
-        "OPTIONS": {
-            "context_processors": [
-                "django.template.context_processors.request",
-                "django.contrib.auth.context_processors.auth",
-                "django.contrib.messages.context_processors.messages",
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
             ],
         },
     },
 ]
 
-# === Banco de Dados ===
-# Fallback: SQLite. Se DATABASE_URL existir, usa ela (Postgres no Render).
-# Requer dj-database-url no requirements.txt
+WSGI_APPLICATION = 'setup.wsgi.application'
+
+
+# Database
+# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
-DATABASE_URL = os.getenv("DATABASE_URL")
-if DATABASE_URL:
-    from dj_database_url import config as dj_database_url_config
-    DATABASES["default"] = dj_database_url_config(
-        default=DATABASE_URL,
-        conn_max_age=600,
-        ssl_require=not DEBUG  # em prod, força SSL no DB
-    )
 
-# === Password validators ===
+# Password validation
+# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
+
 AUTH_PASSWORD_VALIDATORS = [
-    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
 ]
 
-<<<<<<< HEAD
 
 # --- CONFIGURAÇÃO DE E-MAIL COM SENDGRID ---
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -129,64 +111,21 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
-=======
-# === I18N / Timezone ===
-LANGUAGE_CODE = "pt-br"
-TIME_ZONE = "America/Sao_Paulo"
->>>>>>> fd91b9f747a36440807c2d20af3f46aa92636eea
 USE_I18N = True
-USE_TZ = True  # mantém o banco em UTC (recomendado)
 
-# === Static files (obrigatório para collectstatic) ===
-# Em produção, o Django coletará tudo em STATIC_ROOT
-STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
+USE_TZ = True
 
-# Se você possui arquivos locais em /static (CSS/JS/Imagens do projeto)
-STATICFILES_DIRS = []
-_static_dir = BASE_DIR / "static"
-if _static_dir.exists():
-    STATICFILES_DIRS.append(_static_dir)
 
-# Django 4.2+ recomenda STORAGES ao invés de STATICFILES_STORAGE
-STORAGES = {
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-# === (Opcional) django-compressor – se habilitar no INSTALLED_APPS ===
-# COMPRESS_ENABLED = not DEBUG
-# COMPRESS_URL = STATIC_URL
-# COMPRESS_ROOT = STATIC_ROOT
+STATIC_URL = 'static/'
 
-# === Arquivos de mídia (se precisar) ===
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
-# === Segurança extra quando DEBUG=False ===
-if not DEBUG:
-    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-    SECURE_SSL_REDIRECT = True  # redireciona http->https no Render
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-    # Ajuste conforme necessidade do seu caso
-    # SECURE_HSTS_SECONDS = 60 * 60 * 24 * 7  # 1 semana
-    # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    # SECURE_HSTS_PRELOAD = True
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
-# === Log básico (útil em produção) ===
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "handlers": {
-        "console": {"class": "logging.StreamHandler"},
-    },
-    "root": {"handlers": ["console"], "level": "INFO"},
-}
-
-# === Primary key default ===
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
